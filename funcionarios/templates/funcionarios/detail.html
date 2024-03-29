@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Detalhes do Funcionário {{ funcionario.nome }}</h1>
+
+    <ul>
+        <li><strong>Nome:</strong> {{ funcionario.nome }}</li>
+        <li><strong>Cargo:</strong> {{ funcionario.cargo }}</li>
+        <li><strong>Salário:</strong> U$ {{ funcionario.salario }}</li>
+        <li><strong>Idade:</strong> {{ funcionario.idade }}</li>
+        <li><strong>Telefone:</strong> {{ funcionario.telefone }}</li>
+        <li><strong>Data da Contratação:</strong> {{ funcionario.data_contratacao }}</li>
+        <li><strong>Descrição:</strong> {{ funcionario.descricao }}</li>
+        <li><strong>Departamentos:</strong> {{ funcionario.descricao }}
+            <ul>
+                {% for departamento in funcionario.departamentos.all %}
+                    <li>{{ departamento.nome }}</li>
+                {% empty %}
+                    <li>Funcionário não está vinculado a nenhum Departamento.</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li><strong>Dependentes:</strong> 
+            <ul>
+                {% for dependente in funcionario.dependentes.all %}
+                    <li>{{ dependente.nome }}</li>
+                {% empty %}
+                    <li>Nenhum dependente cadastrado.</li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+
+{% endblock %}

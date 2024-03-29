@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Funcionários</h1>
+
+    <ol>
+    {% for funcionario in funcionarios %}
+
+        <li>
+            {{ funcionario.nome }} - {{ funcionario.cargo }}
+            <a href="{% url 'funcionario_detail' funcionario.id %}">(detalhes)</a>
+        </li>
+
+    {% endfor %}
+    </ol>
+
+{% endblock %}
